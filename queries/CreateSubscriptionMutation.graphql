@@ -1,0 +1,8 @@
+
+        mutation CreateSubscriptionMutation($input: SubscriptionMutationInput! ){
+          subscription(input: $input) {
+          success,
+            clientMutationId
+          }
+        }
+      

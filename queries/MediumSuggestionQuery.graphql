@@ -1,0 +1,11 @@
+
+          query MediumSuggestionQuery {
+            subscription {
+              suggestions(source: "medium", value: "oil", size: 5) {
+                id,
+                suggestion,
+                suggestionId,
+                score
+              }
+            }
+          }

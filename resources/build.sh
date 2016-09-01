@@ -9,8 +9,10 @@ fi
 
 rm -rf dist/ && mkdir -p dist/
 babel src --ignore __tests__ --out-dir dist/
+cp queries/queries.json dist/queries.json
 echo "Bundling graphiql.js..."
 browserify -g browserify-shim -s GraphiQL dist/index.js > graphiql.js
+browserify -g browserify-shim -s GraphiQL dist/index.js > dist/graphiql.js
 echo "Bundling graphiql.min.js..."
 browserify -g browserify-shim -g uglifyify -s GraphiQL dist/index.js 2> /dev/null | uglifyjs -c --screw-ie8 > graphiql.min.js 2> /dev/null
 echo "Bundling graphiql.css..."

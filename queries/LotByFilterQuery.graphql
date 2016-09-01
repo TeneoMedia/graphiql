@@ -1,0 +1,126 @@
+
+        query LotByFilterQuery {
+       
+          lots (filter: [
+       [
+        {
+          query : "artist",
+          text: "van"
+        },
+        {
+          query : "medium",
+          text: "oil"
+        },
+        {
+          query : "startingBid",
+          range: {
+            start: 5000
+          }
+        },
+        {
+          query : "artistRange",
+          range : {
+            start: 1620,
+            end: 1679
+          }
+        }
+      ],
+      [
+        {
+          query : "keyword",
+          text: "impressionist"
+        }
+      ],
+      [
+        {
+          query : "artistRange",
+          range: {
+            start: 1620,
+            end: 1679
+          }
+        }
+      ]
+    ], first:10) {
+              
+              pageInfo{
+                hasNextPage
+              },
+              edges {
+                cursor,
+                node {
+                  auctionDateDisplay,
+                  artist,
+                  artistDates,
+                  artistFirstName,
+                  artistLastName,              
+                  auctionName,
+                  auctionStart,
+                  auctionStartISO,
+                  artistRange{
+                    start,
+                    end
+                  },
+                  condition,
+                  currency,
+                  description,
+                  estimateHigh,
+                  estimateLow,
+                  estimateOnRequest,
+                  guaranteeLine,
+                  guaranteeLineX,
+                  houseLotURL,
+                  id,
+                  lotId,
+                  largeImage,
+                  lastUpdated,
+                  location {
+                    address,
+                    city,
+                    latitude,
+                    longitude,
+                    timezone
+                  },
+                  locationKey,
+                  lotNumber,
+                  lotPath,
+                  lotSortNumber,
+                  mediumImage,
+                  relativeFlag,
+                  relativeHeight,
+                  relativeLength,
+                  relativeWidth,
+                  saleNumber,
+                  salePrice,
+                  sessions{
+                    endISO,
+                    endDateDisplay,
+                    endLot,
+                    lastUpdated,
+                    sessionNumber,
+                    start,
+                    startDateDisplay,
+                    saleNumber,
+                    location {
+                      address,
+                      city,
+                      latitude,
+                      longitude,
+                      timezone
+                    },
+                    startLot
+                  },
+                  smallImage,
+                  sold,
+                  sourceSessionId,
+                  sothebysId,
+                  startingBid,
+                  objectRange{
+                    start,
+                    end
+                  }
+                }
+              }
+          }
+        
+      }
+      

@@ -1,0 +1,93 @@
+
+        query AuctionBySaleNumberQuery {
+
+            auctions(saleNumber: "L15006") {
+              
+                pageInfo{
+                  hasNextPage
+                },
+                edges {
+                  cursor,
+                  node {
+                    saleNumber,
+                    end,
+                    saleTotalUSD,
+                    location {
+                      address,
+                      city,
+                      latitude,
+                      longitude,
+                      timezone
+                    },
+                    start,
+                    title,
+                    totalLots,
+                    lots(first:3){
+                        
+              pageInfo{
+                hasNextPage
+              },
+              edges {
+                cursor,
+                node {
+                  artist,
+                  artistDates,        
+                  auctionName,
+                  auctionStart,
+                  auctionStartISO,
+                  artistRange{
+                    start,
+                    end
+                  },
+                  estimateHigh,
+                  estimateLow,
+                  estimateOnRequest,
+                  id,
+                  lotNumber,
+                  lotPath,
+                  lotSortNumber,
+                  mediumImage,
+                  saleNumber,
+                  salePrice,            
+                  sold,
+                  sothebysId,
+                  startingBid,
+                  objectRange{
+                    start,
+                    end
+                  }
+                }
+              }
+                    },
+                    sessions{
+                      endISO,
+                      endDateDisplay,
+                      endLot,
+                      lastUpdated,
+                      sessionNumber,
+                      start,
+                      startDateDisplay,
+                      saleNumber,
+                      startLot
+                    },
+                    exhibitions{
+                      endISO,
+                      endDateDisplay,
+                      end,
+                      lastUpdated,
+                      start,
+                      startDateDisplay,
+                      saleNumber,
+                      start,
+                    },
+                    departments{
+                      departmentCode,
+                      departmentPath,
+                      name,
+                      lastUpdated,
+                    },
+                  }
+                }
+            }
+
+        }

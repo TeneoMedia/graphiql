@@ -1,0 +1,25 @@
+
+        query EventsByFilterQuery {
+       
+          events (filter: [
+       [
+        {
+            query: "artist",
+            text: "van"
+        }
+      ]
+    ], first:10) {
+              
+              pageInfo{
+                hasNextPage
+              },
+              edges {
+                cursor,
+                node {
+                  lotId,
+                }
+              }
+          }
+        
+      }
+      

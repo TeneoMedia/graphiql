@@ -1,0 +1,87 @@
+
+        query LotByIdQuery {
+
+          lots (id: 727506341339, first: 1) {
+            
+              pageInfo{
+                hasNextPage
+              },
+              edges {
+                cursor,
+                node {
+                  auctionDateDisplay,
+                  artist,
+                  artistDates,
+                  artistFirstName,
+                  artistLastName,              
+                  auctionName,
+                  auctionStart,
+                  auctionStartISO,
+                  artistRange{
+                    start,
+                    end
+                  },
+                  condition,
+                  currency,
+                  description,
+                  estimateHigh,
+                  estimateLow,
+                  estimateOnRequest,
+                  guaranteeLine,
+                  guaranteeLineX,
+                  houseLotURL,
+                  id,
+                  lotId,
+                  largeImage,
+                  lastUpdated,
+                  location {
+                    address,
+                    city,
+                    latitude,
+                    longitude,
+                    timezone
+                  },
+                  locationKey,
+                  lotNumber,
+                  lotPath,
+                  lotSortNumber,
+                  mediumImage,
+                  relativeFlag,
+                  relativeHeight,
+                  relativeLength,
+                  relativeWidth,
+                  saleNumber,
+                  salePrice,
+                  sessions{
+                    endISO,
+                    endDateDisplay,
+                    endLot,
+                    lastUpdated,
+                    sessionNumber,
+                    start,
+                    startDateDisplay,
+                    saleNumber,
+                    location {
+                      address,
+                      city,
+                      latitude,
+                      longitude,
+                      timezone
+                    },
+                    startLot
+                  },
+                  smallImage,
+                  sold,
+                  sourceSessionId,
+                  sothebysId,
+                  startingBid,
+                  objectRange{
+                    start,
+                    end
+                  }
+                }
+              }
+          }
+
+      }
+      

@@ -1,0 +1,45 @@
+
+          query SubscriptionByIdQuery{
+            subscription(id: "2ZSVt00rhv4ZLxv") {
+              id
+              email
+              google
+              ics
+              calendarName
+              filters {            
+                ... on StringFilter{
+                  query,
+                  text
+                },
+                ... on BooleanFilter{
+                  query,
+                  bool
+                },
+                ... on StartEndRangeFilter{
+                  query,
+                  range{
+                    start,
+                    end
+                  }
+                },
+                ... on DateRangeFilter{  query,
+                  dateRange{
+                    start,
+                    end
+                  }},
+              }
+              oauth {
+                accessToken
+              }
+              user {
+                name
+              }
+              events(first: 2) {
+                edges {
+                  node {
+                    lotId
+                  }
+                }
+              }
+            }
+          }

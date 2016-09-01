@@ -1,0 +1,50 @@
+{
+  "input": {
+    "clientMutationId": "abcde",
+    "email": "a@a.com",
+    "google": false,
+    "ics": true,
+    "calendarName": "test cal",
+    "oauth": {
+      "code": "oacode",
+      "accessToken": "oaAcccessToken",
+      "refreshToken": "oarefreshToken"
+    },
+    "user": {
+      "name": "a",
+      "firstName": "fn",
+      "lastName": "ln",
+      "email": "em",
+      "id": "aid"
+    },
+    "filters": [
+      [
+        {
+          "query": "artist",
+          "text": "van"
+        },
+        {
+          "query": "startingBid",
+          "range": {
+            "start": 5000
+          }
+        }
+      ],
+      [
+        {
+          "query": "keyword",
+          "text": "impressionist"
+        }
+      ],
+      [
+        {
+          "query": "auctionRange",
+          "dateRange": {
+            "start": "2017-01-01T00:00:00.000Z",
+            "end": "2017-01-31T00:00:00.000Z"
+          }
+        }
+      ]
+    ]
+  }
+}

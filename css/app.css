@@ -24,6 +24,27 @@
   width: 100%;
 }
 
+.queryLoading{
+    position: absolute;
+    z-index: 2000;
+    /* top: 0; */
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select{
+    height: 27px;
+    padding: 6px 10px;
+    background-color: #fff;
+    border: 1px solid #D1D1D1;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
 .graphiql-container .editorWrap {
   display: -webkit-flex;
   display:         flex;
@@ -116,6 +137,7 @@
           flex: 1;
   -webkit-flex-direction: column;
           flex-direction: column;
+    position: relative;
 }
 
 .graphiql-container .resultWrap {

@@ -1,0 +1,57 @@
+
+    query AuctionByFilterQuery {
+
+        auctions(filter: [
+       [
+        {
+          query : "artist",
+          text: "van"
+        },
+        {
+          query : "medium",
+          text: "oil"
+        },
+        {
+          query : "startingBid",
+          range: {
+            start: 5000
+          }
+        },
+        {
+          query : "artistRange",
+          range : {
+            start: 1620,
+            end: 1679
+          }
+        }
+      ],
+      [
+        {
+          query : "keyword",
+          text: "impressionist"
+        }
+      ],
+      [
+        {
+          query : "artistRange",
+          range: {
+            start: 1620,
+            end: 1679
+          }
+        }
+      ]
+    ], first:2) {
+            pageInfo{
+              hasNextPage
+            },
+            edges {
+              cursor,
+              node {
+                saleNumber,
+                end,
+                saleTotalUSD
+              }
+            }
+
+      }
+    }

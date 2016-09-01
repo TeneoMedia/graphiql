@@ -1,0 +1,15 @@
+
+        query AllAuctionQuery{
+          auctions(first:10) {
+           pageInfo{
+                hasNextPage
+              },
+              edges {
+                cursor,
+                node {
+                  saleNumber,
+                  end,
+                }
+              }
+            }
+        }

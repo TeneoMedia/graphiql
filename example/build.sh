@@ -2,7 +2,8 @@
 
 rm -rf dist/ && mkdir -p dist/ &&
 babel server.js -o dist/server.js &&
-cp node_modules/graphiql/graphiql.js dist/graphiql.js &&
-cp node_modules/graphiql/graphiql.css dist/graphiql.css &&
+cp ../dist/graphiql.js dist/graphiql.js &&
+cp ../graphiql.css dist/graphiql.css &&
 cp -r vendor/ dist/vendor/ &&
+cp queryList.json dist/queryList.json &&
 cat index.html > dist/index.html

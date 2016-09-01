@@ -28,6 +28,7 @@ import debounce from '../utility/debounce';
 import find from '../utility/find';
 import { fillLeafs } from '../utility/fillLeafs';
 import { getLeft, getTop } from '../utility/elementPosition';
+import { QuerySelect } from './QuerySelect';
 import {
   introspectionQuery,
   introspectionQuerySansSubscriptions,
@@ -173,6 +174,7 @@ export class GraphiQL extends React.Component {
       docExplorerWidth: Number(this._storageGet('docExplorerWidth')) || 350,
       isWaitingForResponse: false,
       subscription: null,
+      loading:false,
       ...queryFacts
     };
 
@@ -253,6 +255,10 @@ export class GraphiQL extends React.Component {
     this._storageSet('variableEditorHeight', this.state.variableEditorHeight);
     this._storageSet('docExplorerWidth', this.state.docExplorerWidth);
   }
+  
+  isLoading = () => {
+    this.setState({loading : !this.state.loading})
+  }
 
   render() {
     const children = React.Children.toArray(this.props.children);
@@ -261,8 +267,8 @@ export class GraphiQL extends React.Component {
       <GraphiQL.Logo />;
 
     const toolbar = find(children, child => child.type === GraphiQL.Toolbar) ||
-      <GraphiQL.Toolbar />;
-
+       <GraphiQL.Toolbar />;
+  
     const footer = find(children, child => child.type === GraphiQL.Footer);
 
     const queryWrapStyle = {
@@ -279,6 +285,8 @@ export class GraphiQL extends React.Component {
     const variableStyle = {
       height: variableOpen ? this.state.variableEditorHeight : null
     };
+    
+    //const loadingQuery = (!this.state.loading) ? null : Loading...</div>;
 
     return (
       <div className="graphiql-container">
@@ -297,6 +305,10 @@ export class GraphiQL extends React.Component {
                 title="Prettify Query"
                 label="Prettify"
               />
+              <QuerySelect
+                onChange={this.loadSavedQuery}
+                 loading={this.isLoading}
+              />
               {toolbar}
             </div>
             {!this.state.docExplorerOpen &&
@@ -312,6 +324,13 @@ export class GraphiQL extends React.Component {
             className="editorBar"
             onMouseDown={this.handleResizeStart}>
             <div className="queryWrap" style={queryWrapStyle}>
+             
+              {this.state.loading &&
+              <div className="queryLoading"> <div className="spinner-container">
+                <div className="spinner" />
+              </div>
+              </div>
+              }
               <QueryEditor
                 ref={n => { this.queryEditorComponent = n; }}
                 schema={this.state.schema}
@@ -606,6 +625,12 @@ export class GraphiQL extends React.Component {
     const editor = this.queryEditorComponent.getCodeMirror();
     editor.setValue(query);
   }
+  
+  loadSavedQuery = (q) => {
+    const query = print(parse(q));
+    const editor = this.queryEditorComponent.getCodeMirror();
+    editor.setValue(query);
+  }
 
   handleEditQuery = value => {
     if (this.state.schema) {
@@ -826,7 +851,7 @@ export class GraphiQL extends React.Component {
 GraphiQL.Logo = function GraphiQLLogo(props) {
   return (
     <div className="title">
-      {props.children || <span>{'Graph'}<em>{'i'}</em>{'QL'}</span>}
+      {props.children || <span>{'Events GraphQL'}</span>}
     </div>
   );
 };
